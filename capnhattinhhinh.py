@@ -4,7 +4,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtCore import pyqtSlot, Qt
 from GetCrawledData import Data
 
-class App(QWidget):
+class Covid19_status(QWidget):
 
     def __init__(self):
         super().__init__()
@@ -15,9 +15,11 @@ class App(QWidget):
         self.height = 600
         self.initUI()
 
-        self.data = Data()
         
     def initUI(self):
+
+        self.data = Data()
+        
         self.setWindowTitle(self.title)
         self.setGeometry(self.left, self.top, self.width, self.height)
         
@@ -33,7 +35,7 @@ class App(QWidget):
         time = QLabel(self)
         time.setText(self.data.time)
         time.setFont(QFont('Arial',18))
-        time.setAlignment(Qt.AlignCenterAlignCenter)
+        time.setAlignment(Qt.AlignCenter)
 
         self.createTable()
 
@@ -49,7 +51,7 @@ class App(QWidget):
         self.setLayout(self.v_layout) 
 
         # Show widget
-        self.show()
+        #self.show()
 
     def createTable(self):
         

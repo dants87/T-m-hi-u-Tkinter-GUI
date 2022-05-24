@@ -9,8 +9,8 @@ from PyQt5.QtCore import Qt
 from pymongo import *
 #DB connection
 mongo_client= MongoClient("mongodb://localhost:27017/")
-db = mongo_client["pyqt5"]
-col = db["project"]
+db = mongo_client["QuanLyTiemVaccine"]
+col = db["ThongTinSinhVien"]
 cur=col.find({})
 list=list(cur)
 
@@ -18,12 +18,13 @@ mui1=0
 mui2=0
 mui3=0
 for i in list:
-    if i["mũi 1"] != "" and i["mũi 2"] != "" and i["mũi 3"] != "":
+    if i["mui1"] != "Chưa tiêm" and i["mui2"] != "Chưa tiêm" and i["mui3"] != "Chưa tiêm":
         mui3 += 1
-    if i["mũi 1"] != "" and i["mũi 2"] != "" and i["mũi 3"] == "":
+    if i["mui1"] != "Chưa tiêm" and i["mui2"] != "Chưa tiêm" and i["mui3"] == "Chưa tiêm":
         mui2 += 1
-    if i["mũi 1"] != "" and i["mũi 2"] == "" and i["mũi 3"] == "":
+    if i["mui1"] != "Chưa tiêm" and i["mui2"] == "Chưa tiêm" and i["mui3"] == "Chưa tiêm":
         mui1 += 1
+        
 class Window(QMainWindow):
     def __init__(self):
         super().__init__()
